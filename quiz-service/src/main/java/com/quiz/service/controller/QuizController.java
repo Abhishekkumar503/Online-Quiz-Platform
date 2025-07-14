@@ -14,7 +14,7 @@ import com.quiz.service.entity.Quiz;
 import com.quiz.service.service.QuizService;
 
 @RestController
-@RequestMapping("/quizzes")
+@RequestMapping("/quiz")
 public class QuizController {
 
 	@Autowired

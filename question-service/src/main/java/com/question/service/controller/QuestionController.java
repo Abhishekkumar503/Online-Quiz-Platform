@@ -13,7 +13,7 @@ import com.question.service.entity.Question;
 import com.question.service.service.QuestionService;
 
 @RestController
-@RequestMapping("questions")
+@RequestMapping("question")
 public class QuestionController {
 
 	@Autowired

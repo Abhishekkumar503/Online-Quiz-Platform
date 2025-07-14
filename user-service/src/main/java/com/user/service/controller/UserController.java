@@ -11,19 +11,19 @@ import com.user.service.entity.User;
 import com.user.service.service.UserService;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/user")
 public class UserController {
 
-    @Autowired
-    private UserService userService;
+	@Autowired
+	private UserService userService;
 
-    @PostMapping("/register")
-    public User register(@RequestBody User user) {
-        return userService.register(user);
-    }
+	@PostMapping("/register")
+	public User register(@RequestBody User user) {
+		return userService.register(user);
+	}
 
-    @PostMapping("/login")
-    public User login(@RequestParam String email, @RequestParam String password) {
-        return userService.login(email, password);
-    }
+	@PostMapping("/login")
+	public User login(@RequestParam String email, @RequestParam String password) {
+		return userService.login(email, password);
+	}
 }

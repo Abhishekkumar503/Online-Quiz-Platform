@@ -14,7 +14,7 @@ import com.result.service.entity.Result;
 import com.result.service.service.ResultService;
 
 @RestController
-@RequestMapping("/results")
+@RequestMapping("/result")
 public class ResultController {
 
 	@Autowired
