@@ -81,10 +81,11 @@
 
 		<!-- Import DTOs from common module -->
 		<dependency>
-			<groupId>com.onlinequiz</groupId>
-			<artifactId>online-quiz-platform-parent</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+		    <groupId>com.onlinequiz</groupId>
+		    <artifactId>common</artifactId>
+		    <version>0.0.1-SNAPSHOT</version>
 		</dependency>
+
 	</dependencies>
 
 	<build>
