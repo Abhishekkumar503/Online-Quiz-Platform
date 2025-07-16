@@ -11,10 +11,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.quiz.service.entity.Quiz;
+import com.quiz.service.entity.QuizDto;
 import com.quiz.service.service.QuizService;
 
-import reponse.ApiResponse;
+import dto.question.QuestionWrapper;
+import dto.result.Response;
 
 @RestController
 @RequestMapping("/quiz")
@@ -23,24 +24,18 @@ public class QuizController {
 	@Autowired
 	private QuizService quizService;
 
-	@PostMapping
-	public ResponseEntity<ApiResponse<Quiz>> create(@RequestBody Quiz quiz) {
-		Quiz createdQuiz = quizService.createQuiz(quiz);
-		ApiResponse<Quiz> response = new ApiResponse<>(true, "Quiz created successfully", createdQuiz);
-		return ResponseEntity.ok(response);
+	@PostMapping("create")
+	public ResponseEntity<String> createQuiz(@RequestBody QuizDto quizDto) {
+		return quizService.createQuiz(quizDto.getCategoryName(), quizDto.getNumQuestions(), quizDto.getTitle());
 	}
 
-	@GetMapping
-	public ResponseEntity<ApiResponse<List<Quiz>>> getAll() {
-		List<Quiz> quizzes = quizService.getAllQuizzes();
-		ApiResponse<List<Quiz>> response = new ApiResponse<>(true, "Fetched all quizzes", quizzes);
-		return ResponseEntity.ok(response);
+	@GetMapping("get/{id}")
+	public ResponseEntity<List<QuestionWrapper>> getQuizQuestions(@PathVariable Integer id) {
+		return quizService.getQuizQuestions(id);
 	}
 
-	@GetMapping("/{id}")
-	public ResponseEntity<ApiResponse<Quiz>> getById(@PathVariable Long id) {
-		Quiz quiz = quizService.getQuizById(id);
-		ApiResponse<Quiz> response = new ApiResponse<>(true, "Quiz fetched successfully", quiz);
-		return ResponseEntity.ok(response);
+	@PostMapping("submit/{id}")
+	public ResponseEntity<Integer> submitQuiz(@PathVariable Integer id, @RequestBody List<Response> responses) {
+		return quizService.calculateResult(id, responses);
 	}
 }

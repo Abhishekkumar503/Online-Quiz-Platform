@@ -1,13 +1,14 @@
 package dto.question;
 
-import java.util.List;
-
 import lombok.Data;
 
 @Data
 public class QuestionWrapper {
 
-	private Long id;
-    private String questionText;
-    private List<String> options;
+	private Integer id;
+	private String questionTitle;
+	private String option1;
+	private String option2;
+	private String option3;
+	private String option4;
 }

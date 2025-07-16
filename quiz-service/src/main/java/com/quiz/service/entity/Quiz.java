@@ -1,5 +1,8 @@
 package com.quiz.service.entity;
 
+import java.util.List;
+
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,11 +22,9 @@ import lombok.NoArgsConstructor;
 public class Quiz {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-
+	private Integer id;
 	private String title;
 
-	private String description;
-
-	private String category;
+	@ElementCollection
+	private List<Integer> questionIds;
 }
